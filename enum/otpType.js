@@ -1,0 +1,4 @@
+exports.OTP_TYPE = Object.freeze({
+    REGISTRATION: "REGISTRATION",
+    FORGET_PASSWORD: "FORGET_PASSWORD",
+});

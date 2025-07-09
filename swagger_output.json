@@ -1,0 +1,687 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API",
+    "version": "1.0.0",
+    "description": "This is the API for the application"
+  },
+  "host": "localhost:3006",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "scheme": "bearer",
+      "in": "header"
+    }
+  },
+  "paths": {
+    "/api/v1/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "login",
+            "in": "body",
+            "description": "Api to login user",
+            "schema": {
+              "$ref": "#/definitions/login"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/auth/reset-password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Reset Password",
+        "description": "",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Api to login",
+            "schema": {
+              "$ref": "#/definitions/login"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/public/upload": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/v1/public/user/enroll": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Enroll User",
+        "description": "",
+        "parameters": [
+          {
+            "name": "enroll",
+            "in": "body",
+            "description": "Api to enroll user",
+            "schema": {
+              "$ref": "#/definitions/enroll"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/enroll"
+            }
+          },
+          "401": {
+            "description": "Unathorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "The request is unauthorized"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/public/user/": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Create User",
+        "description": "",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Api to create user",
+            "schema": {
+              "$ref": "#/definitions/addUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          },
+          "401": {
+            "description": "Unathorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "The request is unauthorized"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get All Users",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          },
+          "401": {
+            "description": "Unathorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "The request is unauthorized"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Delete User",
+        "description": "",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Api to delete user ",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/public/user/selected": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get One User",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          },
+          "401": {
+            "description": "Unathorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "The request is unauthorized"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/public/user/{id}": {
+      "patch": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Update User",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Api to update user",
+            "schema": {
+              "$ref": "#/definitions/updateUser"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/public/role/": {
+      "post": {
+        "tags": [
+          "Role"
+        ],
+        "summary": "Add Role",
+        "description": "",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "body",
+            "description": "Api to add role",
+            "schema": {
+              "$ref": "#/definitions/addRole"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/addRole"
+            }
+          },
+          "401": {
+            "description": "Unathorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "The request is unauthorized"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "summary": "Get Role",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/addRole"
+            }
+          },
+          "401": {
+            "description": "Unathorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "The request is unauthorized"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Role"
+        ],
+        "summary": "Add role",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Role",
+            "in": "body",
+            "description": "Api to update role",
+            "schema": {
+              "$ref": "#/definitions/updateRole"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/public/resource/": {
+      "get": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Get resource",
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/v1/public/permission/": {
+      "get": {
+        "tags": [
+          "Permission"
+        ],
+        "summary": "Get Permission",
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/v1/public/role-resource-permission/": {
+      "post": {
+        "tags": [
+          "Role Resource Permission"
+        ],
+        "summary": "Add Role Resource Permission",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Role Resource Permission",
+            "in": "body",
+            "description": "Api to add role resource permission",
+            "schema": {
+              "$ref": "#/definitions/roleResourcePermission"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "get": {
+        "tags": [
+          "Role Resource Permission"
+        ],
+        "summary": "Get Role Resource Permission",
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "patch": {
+        "tags": [
+          "Role Resource Permission"
+        ],
+        "summary": "Add Role Resource Permission",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Role Resource Permission",
+            "in": "body",
+            "description": "Api to update role resource permission",
+            "schema": {
+              "$ref": "#/definitions/roleResourcePermission"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/private/admin/role": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/v1/private/admin/tutorial": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    }
+  },
+  "definitions": {
+    "addTutorial": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Test"
+        },
+        "description": {
+          "type": "string",
+          "example": "test"
+        },
+        "published": {
+          "type": "string",
+          "example": ""
+        },
+        "days": {
+          "type": "number",
+          "example": 7
+        },
+        "charge": {
+          "type": "number",
+          "example": 250
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "published"
+      ]
+    },
+    "updateTutorial": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Test"
+        },
+        "description": {
+          "type": "string",
+          "example": "test"
+        },
+        "published": {
+          "type": "string",
+          "example": ""
+        },
+        "days": {
+          "type": "number",
+          "example": 7
+        },
+        "charge": {
+          "type": "number",
+          "example": 250
+        },
+        "id": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "published"
+      ]
+    },
+    "login": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "test@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "password123"
+        }
+      }
+    },
+    "enroll": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "test@gmail.com"
+        },
+        "tutorialId": {
+          "type": "number",
+          "example": 2
+        }
+      },
+      "required": [
+        "tutorialId"
+      ]
+    },
+    "addRole": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "admin"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "updateRole": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "admin"
+        },
+        "id": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "setRole": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "test@gmail.com"
+        },
+        "roleId": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "addUser": {
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "example": "Test Bahadur"
+        },
+        "email": {
+          "type": "string",
+          "example": "test@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "password123"
+        }
+      }
+    },
+    "updateUser": {
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "example": "Test Bahadur"
+        },
+        "email": {
+          "type": "string",
+          "example": "test@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "password123"
+        },
+        "id": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "addResource": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "DASHBOARD"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "updateResource": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "DASHBOARD"
+        },
+        "id": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "roleResourcePermission": {
+      "type": "object",
+      "properties": {
+        "roleId": {
+          "type": "number",
+          "example": 1
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "resourceId": {
+                "type": "number",
+                "example": 1
+              },
+              "permissions": {
+                "type": "array",
+                "example": [
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ]
+}
