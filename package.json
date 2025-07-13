@@ -39,17 +39,20 @@
     "multer": "^1.4.3",
     "mysql2": "^3.2.0",
     "nodemailer": "^6.9.1",
+    "pg": "^8.16.3",
+    "pg-hstore": "^2.3.4",
     "sequelize": "^6.29.3",
     "sequelize-auto-migrations": "github:scimonster/sequelize-auto-migrations#a063aa6535a3f580623581bf866cef2d609531ba",
-    "sequelize-cli": "^6.6.0",
     "supertest": "^6.3.3",
     "swagger-autogen": "^2.23.1",
     "swagger-ui-express": "^4.6.2",
     "util": "^0.12.5",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "zod": "^4.0.5"
   },
   "devDependencies": {
     "jest": "^29.5.0",
-    "nodemon": "^2.0.21"
+    "nodemon": "^2.0.21",
+    "sequelize-cli": "^6.6.3"
   }
 }
