@@ -2,6 +2,7 @@ const Sequelize = require("sequelize");
 const dbConfig = require("../config/config");
 const { ScopeData } = require("../scopes");
 const cls = require("cls-hooked");
+const { createNidTable } = require("../utils/db/createNid");
 const namespace = cls.createNamespace("tutovia");
 
 const { database, username, password, host, dialect } =
@@ -17,9 +18,11 @@ const sequelize = new Sequelize(database, username, password, {
 });
 const db = {};
 
+
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+db.Nid = require("./nid")(sequelize, Sequelize)
 db.User = require("./user")(sequelize, Sequelize);
 db.Otp = require("./otp")(sequelize, Sequelize);
 db.Role = require("./role")(sequelize, Sequelize);

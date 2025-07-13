@@ -5,7 +5,7 @@ module.exports = {
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
     host: process.env.HOST,
-    port: 3306,
+    port: 19420,
     dialect: process.env.DIALECT,
     dialectOptions: {
       bigNumberStrings: true,
@@ -16,7 +16,7 @@ module.exports = {
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
     host: process.env.HOST,
-    port: 3306,
+    port: 19420,
     dialect: process.env.DIALECT,
     dialectOptions: {
       bigNumberStrings: true,
@@ -27,7 +27,7 @@ module.exports = {
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
     host: process.env.HOST,
-    port: 3306,
+    port: 19420,
     dialect: process.env.DIALECT,
     dialectOptions: {
       bigNumberStrings: true,
