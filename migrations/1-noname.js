@@ -310,21 +310,21 @@ var migrationCommands = function(transaction) {
                     "transaction": transaction
                 }
             ]
-        },
-        {
-            fn: "addIndex",
-            params: [
-                "roles",
-                ["name", "subName"],
-                {
-                    "indexName": "name_subName",
-                    "name": "name_subName",
-                    "indicesType": "UNIQUE",
-                    "type": "UNIQUE",
-                    "transaction": transaction
-                }
-            ]
         }
+        // {
+        //     fn: "addIndex",
+        //     params: [
+        //         "roles",
+        //         ["name", "subName"],
+        //         {
+        //             "indexName": "name_subName",
+        //             "name": "name_subName",
+        //             "indicesType": "UNIQUE",
+        //             "type": "UNIQUE",
+        //             "transaction": transaction
+        //         }
+        //     ]
+        // }
     ];
 };
 var rollbackCommands = function(transaction) {

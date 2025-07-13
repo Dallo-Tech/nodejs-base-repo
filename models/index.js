@@ -24,6 +24,7 @@ db.User = require("./user")(sequelize, Sequelize);
 db.Otp = require("./otp")(sequelize, Sequelize);
 db.Role = require("./role")(sequelize, Sequelize);
 db.Resource = require("./resource")(sequelize, Sequelize);
+db.NID = require("./nid")(sequelize, Sequelize)
 db.Permission = require("./permission")(sequelize, Sequelize);
 db.RoleResourcePermission = require("./roleResourcePermission")(
   sequelize,
